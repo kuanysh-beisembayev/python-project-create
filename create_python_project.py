@@ -19,6 +19,18 @@ USER app
 
 DOCKERIGNORE_SOURCE = 'https://raw.githubusercontent.com/GoogleCloudPlatform/getting-started-python/main/optional-kubernetes-engine/.dockerignore'  # noqa: E501
 
+DOCKER_COMPOSE_CONTENT = """
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    volumes:
+      - .:/app
+    tty: true
+    command: python -m src.main
+"""
+
 DEV_REQUIREMENTS_CONTENT = """
 -r base.txt
 flake8
@@ -64,6 +76,7 @@ def main() -> None:
     _create_requirements_dir(project_dir)
     _create_docker_dir(project_dir)
     _create_dockerignore(project_dir)
+    _create_docker_compose(project_dir)
     _create_flake8_config(project_dir)
     _create_pyright_config(project_dir)
     _create_gitignore(project_dir)
@@ -109,6 +122,11 @@ def _create_dockerignore(project_dir: Path) -> None:
 
     with open(project_dir / '.dockerignore', 'w') as file:
         file.write(gitignore_content)
+
+
+def _create_docker_compose(project_dir: Path) -> None:
+    with open(project_dir / 'docker-compose.yml', 'w') as file:
+        file.write(DOCKER_COMPOSE_CONTENT.lstrip())
 
 
 def _create_flake8_config(project_dir: Path) -> None:
