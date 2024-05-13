@@ -105,7 +105,7 @@ def _create_dockerignore(project_dir: Path) -> None:
 
 def _create_flake8_config(project_dir: Path) -> None:
     with open(project_dir / '.flake8', 'w') as file:
-        file.write(FLAKE8_CONTENT)
+        file.write(FLAKE8_CONTENT.lstrip())
 
 
 def _create_gitignore(project_dir: Path) -> None:
