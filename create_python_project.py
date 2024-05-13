@@ -53,7 +53,7 @@ def main() -> None:
     project_dir = Path(args.project_name)
 
     _create_project(project_dir)
-    _create_code_dir(project_dir)
+    _create_src_dir(project_dir)
     _create_requirements_dir(project_dir)
     _create_docker_dir(project_dir)
     _create_dockerignore(project_dir)
@@ -66,8 +66,8 @@ def _create_project(project_dir: Path) -> None:
     project_dir.mkdir()
 
 
-def _create_code_dir(project_dir: Path) -> None:
-    code_dir = project_dir / 'code'
+def _create_src_dir(project_dir: Path) -> None:
+    code_dir = project_dir / 'src'
     code_dir.mkdir()
 
     (code_dir / '__init__.py').touch()
