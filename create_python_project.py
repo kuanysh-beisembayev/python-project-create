@@ -38,6 +38,13 @@ application-import-names = code
 exclude = venv
 """
 
+PYRIGHT_CONTENT = """
+{
+  "venvPath": ".",
+  "venv": "venv"
+}
+"""
+
 GITIGNORE_SOURCE = 'https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore'
 
 GIT_BRANCH = 'develop'
@@ -58,6 +65,7 @@ def main() -> None:
     _create_docker_dir(project_dir)
     _create_dockerignore(project_dir)
     _create_flake8_config(project_dir)
+    _create_pyright_config(project_dir)
     _create_gitignore(project_dir)
     _init_git(project_dir)
 
@@ -106,6 +114,11 @@ def _create_dockerignore(project_dir: Path) -> None:
 def _create_flake8_config(project_dir: Path) -> None:
     with open(project_dir / '.flake8', 'w') as file:
         file.write(FLAKE8_CONTENT.lstrip())
+
+
+def _create_pyright_config(project_dir: Path) -> None:
+    with open(project_dir / 'pyrightconfig.json', 'w') as file:
+        file.write(PYRIGHT_CONTENT.lstrip())
 
 
 def _create_gitignore(project_dir: Path) -> None:
