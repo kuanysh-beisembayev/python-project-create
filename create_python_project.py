@@ -46,7 +46,7 @@ FLAKE8_CONTENT = """
 [flake8]
 max-line-length = 100
 import-order-style = google
-application-import-names = code
+application-import-names = src
 exclude = venv
 """
 
