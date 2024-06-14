@@ -40,6 +40,7 @@ flake8-builtins
 flake8-import-order
 flake8-commas
 flake8-quotes
+flake8-broken-line
 """
 
 FLAKE8_CONTENT = """
