@@ -41,6 +41,8 @@ flake8-import-order
 flake8-commas
 flake8-quotes
 flake8-broken-line
+flake8-clean-block
+flake8-walrus
 """
 
 FLAKE8_CONTENT = """
