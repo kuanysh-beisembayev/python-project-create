@@ -5,7 +5,7 @@ import subprocess
 from urllib.request import urlopen
 
 DOCKERFILE_CONTENT = """
-FROM python:3.12-slim-bullseye
+FROM python:3.13-slim-bullseye
 
 RUN useradd --create-home --home-dir /app --shell /bin/bash app
 WORKDIR /app
@@ -74,8 +74,7 @@ def main() -> None:
 
     project_dir = Path(args.project_name)
 
-    _create_project(project_dir)
-    _create_src_dir(project_dir)
+    create_src_dir(project_dir)
     _create_requirements_dir(project_dir)
     _create_docker_dir(project_dir)
     _create_dockerignore(project_dir)
@@ -86,13 +85,9 @@ def main() -> None:
     _init_git(project_dir)
 
 
-def _create_project(project_dir: Path) -> None:
-    project_dir.mkdir()
-
-
-def _create_src_dir(project_dir: Path) -> None:
+def create_src_dir(project_dir: Path) -> None:
     code_dir = project_dir / 'src'
-    code_dir.mkdir()
+    code_dir.mkdir(parents=True)
 
     (code_dir / '__init__.py').touch()
     (code_dir / 'main.py').touch()
