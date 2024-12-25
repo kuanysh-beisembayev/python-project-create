@@ -5,7 +5,7 @@ import subprocess
 from urllib.request import urlopen
 
 DOCKERFILE_CONTENT = """
-FROM python:3.12-slim-bullseye
+FROM python:3.13-slim-bullseye
 
 RUN useradd --create-home --home-dir /app --shell /bin/bash app
 WORKDIR /app
