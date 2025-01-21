@@ -43,6 +43,7 @@ flake8-quotes
 flake8-broken-line
 flake8-clean-block
 flake8-walrus
+flake8-eradicate
 """
 
 FLAKE8_CONTENT = """
